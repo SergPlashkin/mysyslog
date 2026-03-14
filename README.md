@@ -1,10 +1,19 @@
-# mysyslog: A Modular Logging System
-
-This project is a educational implementation of a flexible logging system in C. It consists of a core library, format plugins (drivers), a client utility, and a logging daemon.
-
-## Repository Structure
-*   `libmysyslog/` - Core logging library with plugin support.
-*   `libmysyslog-text/` - Plugin for plain text log format.
-*   `libmysyslog-json/` - Plugin for JSON log format.
-*   `mysyslog-client/` - Command-line tool to send log messages.
-*   `mysyslog-daemon/` - Daemon for automatic, repeated logging.
+# mysyslog
+Проект mysyslog
+это библиотека для логирования данных в различных форматах.
+## Структура проекта
+- **libmysyslog**: основная библиотека для логирования.
+- **ltbmysyslog-text**: драйвер для вывода логов в текстовом формате.
+- **libmysyslog-json**: драйвер для вывода логов в формате JSON.
+- **mysyslog-client**: клиентское приложение для тестирования библиотеки.
+- **mysyslog-daemon**: демон, работающий в фоновом режиме и записывающий логи.
+## Особенности
+- Поддерживаемые уровни журналирования: 'DEBUG', 'INFO', 'WARN' 'ERROR', 'CRITICAL'.
+- Поддерживаемые форматы вывода: текстовый формат и JSON.
+## Сборка проекта с помощью Makefile
+- 'make all': собирает все цели.
+- 'make clean': удаляет все временные и объектные файлы, создаваемые при компиляции, возвращая исходные тексты к изначальному виду.
+- 'make deb': собирает deb-пакет для программы.
+## Использование
+- **mysyslog client**: запуск клиентского приложения: /mysyslog-client-m "test message" 1 INFO -d text -f /var/log/mysyslog.log
+- **mysyslog daemon**: настройка конфигурации в '/etc/mysyslog/mysyslog.cfg' и запуск демона: sudo systemctl start mysyslog-daemon
